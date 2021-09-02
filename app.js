@@ -45,7 +45,7 @@ function reverseStr(str) {
     return [ddmmyyyy, mmddyyyy, yyyymmdd, ddmmyy, mmddyy, yymmdd];
   }
   
-  function checkPalindromeForAllDateFormats(date){
+  function palindromeForAllDate(date){
     var listOfPalindromes = getAllDateFormats(date);
   
     var flag = false;
@@ -126,7 +126,7 @@ function reverseStr(str) {
   
     while(1){
       ctr++;
-      var isPalindrome = checkPalindromeForAllDateFormats(nextDate);
+      var isPalindrome = palindromeForAllDate(nextDate);
       if(isPalindrome){
         break;
       }
@@ -135,12 +135,12 @@ function reverseStr(str) {
     return [ctr, nextDate];
   }
   
-  var dateInputRef = document.querySelector('#date-input');
-  var showBtnRef = document.querySelector('#check-button');
-  var resultRef = document.querySelector('#message');
+  var dateInput = document.querySelector('#date-input');
+  var showBtn = document.querySelector('#check-button');
+  var result = document.querySelector('#display-message');
   
   function clickHandler(e){
-    var bdayStr = dateInputRef.value; // 2020-10-11
+    var bdayStr = dateInput.value; // 2020-10-11
     
     if(bdayStr !== ''){
       var listOfDate = bdayStr.split('-'); // ['2020', '10', '11']
@@ -151,17 +151,17 @@ function reverseStr(str) {
         year: Number(listOfDate[0])
       };
       
-      var isPalindrome = checkPalindromeForAllDateFormats(date);
+      var isPalindrome =  palindromeForAllDate(date);
   
       if(isPalindrome){
-         resultRef.innerText = 'Yay! your birthday is a palindrome!! 🥳🥳';
+         result.innerText = 'Yipee! your birthday is a palindrome!!🥰🥰';
       }
       else {
         var [ctr, nextDate] = getNextPalindromeDate(date);
   
-        resultRef.innerText = `The next palindrome date is ${nextDate.day}-${nextDate.month}-${nextDate.year}, you missed it by ${ctr} days! 😔`;
+        result.innerText = `The next palindrome date is ${nextDate.day}-${nextDate.month}-${nextDate.year}, you missed it by ${ctr} days! 😔`;
       }
     }
   }
   
-  showBtnRef.addEventListener('click', clickHandler);
+  showBtn.addEventListener('click', clickHandler);
