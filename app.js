@@ -79,13 +79,13 @@ function reverseStr(str) {
     var month = date.month;
     var year = date.year;
   
-    var daysInMonth = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]; // 0 - 11
+    var daysInMonth = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]; 
   
     
     if(month === 2){ 
-      // check for leap year
-      if(isLeapYear(year)){ // 2020 => true
-         if(day > 29){ // false
+      
+      if(isLeapYear(year)){ 
+         if(day > 29){
            day = 1;
            month++;  
          }
@@ -93,20 +93,20 @@ function reverseStr(str) {
       else {
          if(day > 28){
            day = 1;
-           month++;  // increment the month
+           month++;  
          }
       }
     }
-    // check for other months
+    
     else {
-      //  check if the day exceeds the max days in month
+      
       if(day > daysInMonth[month - 1]){ 
         day = 1; 
-        month++;  // increment the month
+        month++;  
       }
     }
   
-    // increment the year if month is greater than 12
+   
     if(month > 12){
       month = 1;
       year++; 
@@ -119,7 +119,7 @@ function reverseStr(str) {
     };
   }
   
-  // get next palindrome date
+  
   function getNextPalindromeDate(date){
     var ctr = 0;
     var nextDate = getNextDate(date);
@@ -140,10 +140,9 @@ function reverseStr(str) {
   var result = document.querySelector('#display-message');
   
   function clickHandler(e){
-    var bdayStr = dateInput.value; // 2020-10-11
-    
+    var bdayStr = dateInput.value; 
     if(bdayStr !== ''){
-      var listOfDate = bdayStr.split('-'); // ['2020', '10', '11']
+      var listOfDate = bdayStr.split('-'); 
   
       var date = {
         day: Number(listOfDate[2]),
